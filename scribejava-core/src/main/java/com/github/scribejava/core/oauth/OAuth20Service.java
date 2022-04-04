@@ -391,6 +391,10 @@ public class OAuth20Service extends OAuthService {
         }
         request.addParameter(OAuthConstants.GRANT_TYPE, OAuthConstants.CLIENT_CREDENTIALS);
 
+        if (api.getResourceUrl() != null) {
+            request.addParameter(OAuthConstants.AUDIENCE, api.getResourceUrl());
+        }
+
         logRequestWithParams("access token client credentials grant", request);
 
         return request;
